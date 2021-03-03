@@ -23,7 +23,7 @@ public class Tienda {
 		int opcion= 0;
 		Carrito carro= new Carrito();
 		ArrayList<Articulo>catalogo= new ArrayList<Articulo>();
-		
+                
 		inicializarcatalogo(catalogo);		
 		
 		do {
@@ -59,6 +59,7 @@ public class Tienda {
 		c.add(new Articulo("0002", "Teclado", 10.00F, 100));
 		c.add(new Articulo("0003", "RJ45 2M", 4.50F, 50));
 		c.add(new Articulo("0004", "Raton", 20.00F, 15));
+                c.add(new Ropa("rojo", 10, "0005", "jersey", 25.50F, 200));
 	}
 	
 	private static void menu() {

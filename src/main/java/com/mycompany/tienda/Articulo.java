@@ -5,80 +5,87 @@
  */
 package com.mycompany.tienda;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Ismael m
  */
 public class Articulo {
     private String codigo;
-	private String nombre;
-	private float precio;
-	private int stock;
+    private String nombre;
+    private float precio;
+    private int stock;
+    private ArrayList<Opinion> opinion;
 	
-	public Articulo(){
+    public Articulo(){
 		
-	}
+    }
 	
-	public Articulo(String c, String n, float p, int s) {
-		setcodigo(c);
-		setnombre(n);
-		setprecio(p);
-		setstock(s);
-	}
+    public Articulo(String c, String n, float p, int s) {
+	setcodigo(c);
+	setnombre(n);
+	setprecio(p);
+	setstock(s);
+        opinion = new ArrayList<Opinion>();
+    }
 	
-	public String getcodigo() {
-		return codigo;
-	}
-	public String getnombre() {
-		return nombre;
-	}
-	public float getprecio() {
-		return precio;
-	}
-	public int getstock() {
-		return stock;
-	}
+    public String getcodigo() {
+	return codigo;
+    }
+    public String getnombre() {
+	return nombre;
+    }
+    public float getprecio() {
+	return precio;
+    }
+    public int getstock() {
+        return stock;
+    }
+    public ArrayList<Opinion> getopinion(){
+        return opinion;
+    }
 	
-	public void setcodigo(String c) {
-		codigo=c;
-	}
-	public void setnombre(String n) {
-		nombre=n;
-	}
-	public void setprecio(float p) {
-		precio=p;
-	}
-	public void setstock(int s) {
-		stock=s;
-	}
+    public void setcodigo(String c) {
+	codigo=c;
+    }
+    public void setnombre(String n) {
+	nombre=n;
+    }
+    public void setprecio(float p) {
+	precio=p;
+    }
+    public void setstock(int s) {
+	stock=s;
+    }
 	
-	@Override
-	public String toString() {
-		return "Codigo: "+codigo+"\nNombre: "+nombre+"\nPrecio: "+precio+"\nStock: "+stock;
-	}
+    @Override
+    public String toString() {
+	return "Codigo: "+codigo+"\nNombre: "+nombre+"\nPrecio: "+precio+"\nStock: "+stock;
+    }
 	
-	@Override
-	public boolean equals(Object o) {
-		if(o == null) {
-			return false;
-		}
-		if(this.getClass() != o.getClass()) {
-			return false;
-		}else {
-			Articulo a = (Articulo) o;
-			if(codigo.equals(a.getcodigo())) {
-				return true;
-			}else {
-				return false;
-			}
-		}
+    @Override
+    public boolean equals(Object o) {
+        if(o == null) {
+            return false;
 	}
+	if(this.getClass() != o.getClass()) {
+            return false;
+	}else {
+            Articulo a = (Articulo) o;
+            if(codigo.equals(a.getcodigo())) {
+		return true;
+            }else {
+		return false;
+            }
+	}
+    }
 	
-	public boolean disponible(int cantidad) {
-		return cantidad<stock;
-	}
+    public boolean disponible(int cantidad) {
+	return cantidad<stock;
+    }
 	
-	public String sinstock() {
-		return "Codigo: "+codigo+"\nNombre: "+nombre+"\nPrecio: "+precio;
-	}
+    public String sinstock() {
+	return "Codigo: "+codigo+"\nNombre: "+nombre+"\nPrecio: "+precio;
+    }
 }

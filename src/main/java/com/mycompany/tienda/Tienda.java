@@ -56,7 +56,11 @@ public class Tienda {
                     actual=iniciarusuario(usuarios,sct);
                     break;
                 case 7:
-                    
+                    veropiniones(catalogo, scn);
+                    break;
+                case 8:
+                    daropinio(catalogo, actual, sct, scn);
+                    break;
 		default:
 		System.out.println("Esta opcion no existe escribe otra");
 		break;
@@ -265,9 +269,91 @@ public class Tienda {
                 
             }while(!salir);
             
+            System.out.println("Has iniciado con el usuario "+encontrado.getNombre());
+            
             return encontrado;
         }
         
+        private static void veropiniones(ArrayList<Articulo> c, Scanner sc){
+            
+            int opcion;
+            
+            for(int i=0;i<c.size();i++){
+                System.out.println(c.get(i).toString());
+                if(c.get(i).getopinion().size()!=0){
+                    for(Opinion a: c.get(i).getopinion()){
+                        System.out.println(a.toString());
+                        System.out.println("1. like");
+                        System.out.println("2. dislike");
+                        System.out.println("0. no poner nada");
+                        System.out.println("¿Que Quieres hacer?");
+                        opcion=sc.nextInt();
+                        
+                        if(opcion==1){
+                            a.sumapositivo();
+                        }else if(opcion==2){
+                            a.sumanegativo();
+                        }
+                    }
+                }else{
+                    System.out.println("Este articulo no tiene opiniones");
+                }
+            }
+            
+        }
         
+        private static void daropinio(ArrayList<Articulo> c, Usuario u, Scanner sct, Scanner scn){
+            
+            Opinion opinion = new Opinion();
+            int opcion=0;
+            
+            System.out.println("¿Cual es el codigo de articulo a opinar?");
+            for(Articulo a:c){
+                if(a.getcodigo().equals(sct.nextLine())){
+                    do{
+                        opinion.usuario=u;
+                        System.out.println("¿Que puntuacion quieres dar?");
+                        System.out.println("1. "+Puntuacion.excelente);
+                        System.out.println("2. "+Puntuacion.muybueno);
+                        System.out.println("3. "+Puntuacion.bueno);
+                        System.out.println("4. "+Puntuacion.malo);
+                        System.out.println("5. "+Puntuacion.terriblepapa);
+                        System.out.println("Escribe tu opcion:");
+                        opcion=scn.nextInt();
+                        switch(opcion){
+                            case 1:
+                                opinion.puntuacion=Puntuacion.excelente;
+                                break;
+                            case 2:
+                                opinion.puntuacion=Puntuacion.muybueno;
+                                break;
+                            case 3:
+                                opinion.puntuacion=Puntuacion.bueno;
+                                break;
+                            case 4:
+                                opinion.puntuacion=Puntuacion.malo;
+                                break;
+                            case 5:
+                                opinion.puntuacion=Puntuacion.terriblepapa;
+                                break;
+                            default:
+                                System.out.println("Esta puntuacion no es correcta escribe otra.");
+                                break;
+                        }
+                    }while(opcion<1||opcion>5);
+                    System.out.println("Escribe tu comentario");
+                    opinion.comentario=sct.nextLine();
+                    a.getopinion().add(opinion);
+                } else{
+                    System.out.println("Este articulo no existe escribe otro.");
+                }   
+            }
+        }
+        
+        private static void salirusuario(Usuario u, Scanner sc){
+            System.out.println("¿Estas seguro que quieres salir del usuario actual?");
+            System.out.println("Escribe si o no:");
+            
+        }
     
 }

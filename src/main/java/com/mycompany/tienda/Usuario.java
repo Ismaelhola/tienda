@@ -86,4 +86,5 @@ public class Usuario {
     public boolean compemail(){
         return email.matches("[-\\w\\.]+@\\w+\\.\\w+");
     }    
+    
 }

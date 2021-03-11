@@ -17,7 +17,8 @@ public class Opinion {
     int votonegativo;
     
     public Opinion(){
-        
+        votopositivo=0;
+        votonegativo=0;  
     }
     
     public Opinion(Usuario u, Puntuacion p, String c){

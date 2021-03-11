@@ -88,4 +88,5 @@ public class Articulo {
     public String sinstock() {
 	return "Codigo: "+codigo+"\nNombre: "+nombre+"\nPrecio: "+precio;
     }
+    
 }

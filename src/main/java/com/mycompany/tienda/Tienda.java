@@ -21,7 +21,7 @@ public class Tienda {
 	Scanner sct= new Scanner(System.in);
 		
 	int opcion= 0;
-	Carrito carro= new Carrito();
+	Carrito carrito= new Carrito();
 	ArrayList<Articulo>catalogo= new ArrayList<Articulo>();
         ArrayList<Usuario>usuarios= new ArrayList<Usuario>();
         Usuario actual= new Usuario();
@@ -41,10 +41,10 @@ public class Tienda {
                     mostrarcatalogo(catalogo);
                     break;
 		case 2:
-                    comprar(catalogo, carro, sct, scn);
+                    comprar(catalogo, carrito, sct, scn);
                     break;
 		case 3:
-                    confirmarcarrito(carro,scn,catalogo);
+                    confirmarcarrito(carrito,scn,catalogo);
                     break;
                 case 4:
                     mostrarcatalogo(catalogo);

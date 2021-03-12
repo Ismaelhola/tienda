@@ -61,9 +61,12 @@ public class Tienda {
                 case 8:
                     daropinio(catalogo, actual, sct, scn);
                     break;
+                case 9:
+                    salirusuario(actual,scn);
+                    break;
 		default:
-		System.out.println("Esta opcion no existe escribe otra");
-		break;
+                    System.out.println("Esta opcion no existe escribe otra");
+                    break;
             }
 	}while(opcion!=0);
 		
@@ -217,7 +220,7 @@ public class Tienda {
                         }
                     }
                 }else{
-                    System.out.println("Este nombre no es correcto escribe otro.");
+                    System.out.println("Este nombre es muy corto escribe otro.");
                 }                
             }while(!correcto);
             
@@ -226,7 +229,7 @@ public class Tienda {
                 nuevo.setPassword(sc.nextLine());
                 correcto=nuevo.compcont();
                 if(!correcto){
-                    System.out.println("Esta contraseña no es valida escribe otra");
+                    System.out.println("Esta contraseña no es valida escribe otra.");
                 }
             }while(!correcto);
             
@@ -235,20 +238,23 @@ public class Tienda {
                 nuevo.setEmail(sc.nextLine());
                 correcto=nuevo.compemail();
                 if(!correcto){
-                    System.out.println("Este email no es valida escribe otro");
+                    System.out.println("Este email no es valida escribe otro.");
                 }
             }while(!correcto);
             
             u.add(nuevo);
+            System.out.println("el usuario "+nuevo.getNombre()+" a sido dado de alta.");
         }
         
         private static Usuario iniciarusuario(ArrayList<Usuario> u, Scanner sc){
             boolean salir=false;
             Usuario encontrado = new Usuario();
+            String nombre;
             do{
                 System.out.println("¿Cual es el usuario que quieres usar?");
+                nombre=sc.nextLine();
                 for(Usuario a: u){
-                    if(a.getNombre().equals(sc.nextLine())){
+                    if(a.getNombre().equals(nombre)){
                         encontrado=a;
                         salir=true;
                     }
@@ -306,10 +312,13 @@ public class Tienda {
             
             Opinion opinion = new Opinion();
             int opcion=0;
+            String codigo;
+            int contador=0;
             
             System.out.println("¿Cual es el codigo de articulo a opinar?");
+            codigo=sct.nextLine();
             for(Articulo a:c){
-                if(a.getcodigo().equals(sct.nextLine())){
+                if(a.getcodigo().equals(codigo)){
                     do{
                         opinion.usuario=u;
                         System.out.println("¿Que puntuacion quieres dar?");
@@ -345,15 +354,27 @@ public class Tienda {
                     opinion.comentario=sct.nextLine();
                     a.getopinion().add(opinion);
                 } else{
-                    System.out.println("Este articulo no existe escribe otro.");
+                    contador++;
                 }   
+            }
+            if(contador==c.size()){
+                System.out.println("este articulo no existe");
             }
         }
         
         private static void salirusuario(Usuario u, Scanner sc){
-            System.out.println("¿Estas seguro que quieres salir del usuario actual?");
-            System.out.println("Escribe si o no:");
             
+            int opcion;
+            
+            System.out.println("¿Estas seguro que quieres salir del usuario actual?");
+            System.out.println("1. si 2.no");
+            opcion=sc.nextInt();
+            if(opcion==1){
+                u=new Usuario();
+                System.out.println("has salido del usuario");
+            }else{
+                System.out.println("no se a borrado el usuario");
+            }
         }
     
 }

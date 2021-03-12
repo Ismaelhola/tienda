@@ -10,11 +10,11 @@ package com.mycompany.tienda;
  * @author Ismael m
  */
 public class Ropa extends Articulo{
-    String color;
-    int talla;
+    private String color;
+    private int talla;
     
     public Ropa(){
-        
+       
     }
     
     public Ropa(String c, int t, String co, String n, float p, int s){
@@ -23,9 +23,38 @@ public class Ropa extends Articulo{
         talla=t;
     }
     
+    
+    /**
+     * @return the color
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    /**
+     * @return the talla
+     */
+    public int getTalla() {
+        return talla;
+    }
+
+    /**
+     * @param talla the talla to set
+     */
+    public void setTalla(int talla) {
+        this.talla = talla;
+    }
+    
     @Override
     public String toString(){
-        return super.toString()+"\ncolor:"+color+"\ntalla: "+talla;
+        return super.toString()+"\ncolor:"+getColor()+"\ntalla: "+getTalla();
     }
     
 }

@@ -11,13 +11,13 @@ package com.mycompany.tienda;
  */
 public class Ropa extends Articulo{
     private String color;
-    private int talla;
+    private Talla talla;
     
     public Ropa(){
        
     }
     
-    public Ropa(String c, int t, String co, String n, float p, int s){
+    public Ropa(String c, Talla t, String co, String n, float p, int s){
         super(co, n, p, s);
         color=c;
         talla=t;
@@ -41,20 +41,20 @@ public class Ropa extends Articulo{
     /**
      * @return the talla
      */
-    public int getTalla() {
+    public Talla getTalla() {
         return talla;
     }
 
     /**
      * @param talla the talla to set
      */
-    public void setTalla(int talla) {
+    public void setTalla(Talla talla) {
         this.talla = talla;
     }
     
     @Override
     public String toString(){
-        return super.toString()+"\ncolor:"+getColor()+"\ntalla: "+getTalla();
+        return super.toString()+"\ncolor: "+getColor()+"\ntalla: "+getTalla();
     }
     
 }

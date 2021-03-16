@@ -89,7 +89,7 @@ public class Tienda {
         c.add(new Ropa("azul",Talla.S,"0001", "pantalon", 20.00F, 10));
         c.add(new Electrodomestico("0002", "tostadora", 90.00F, 100, ClasE.C,"alta"));
         c.add(new Ropa("verde", Talla.XL,"0003", "sudadera", 40.50F, 50));
-        c.add(new Ropa("0004", "Raton", 20.00F, 15));
+        c.add(new Ropa("rojo con rajas azules",Talla.L,"0004", "camiseta", 20.00F, 15));
         c.add(new Ropa("rojo", Talla.S, "0005", "jersey", 25.50F, 200));
         c.add(new Electrodomestico("0006", "nevera", 500.00F, 200, ClasE.A, "alta"));
         c.add(new Lavadora("0007", "lavadora", 200.00F, 100, ClasE.A, "alta", 1000, 30, 39.50F, Marca.Beko));
@@ -121,15 +121,33 @@ public class Tienda {
         String nombre;
         float precio;
         int stock;
-        System.out.println("Introduce el codigo:");
-        codigo=sct.nextLine();
-        System.out.println("Introduce el nombre:");
-        nombre=sct.nextLine();
-        System.out.println("Introduce el precio");
-        precio=scn.nextFloat();
-        System.out.println("Introduce el stock");
-        stock=scn.nextInt();
-        c.add(new Articulo(codigo, nombre, precio, stock));
+        String color;
+        String gama;
+        int opcion;
+        boolean salir=false;
+        
+        do{
+            System.out.println("¿Que tipo de articulo quieres añadir");
+            System.out.println("1. ropa");
+            System.out.println("2. electrodomestico");
+            System.out.println("¿Que opcion eliges?");
+            opcion=scn.nextInt();
+            switch(opcion){
+                case 1:
+                    do{
+                        salir=false;
+                        System.out.println("¿cual es el codigo?");
+                        codigo=sct.nextLine();
+                        for(Articulo a : c){
+                            if(a.getcodigo().equals(codigo)){
+                             salir=true;
+                                System.out.println("este codigo esta cojido escribe otro");
+                            }
+                        }
+                    }while(salir);
+                    System.out.println("¿cual es el nombre ");
+            }
+        }while(!salir);
     }
     
     private static void mostrarcatalogo(ArrayList<Articulo> c) {
@@ -146,7 +164,7 @@ public class Tienda {
             boolean salir=false;
             boolean entrar=true;
             int opcion=0;
-            Articulo meter=new Articulo();
+            Articulo meter = null;
             
             mostrarcatalogo(c);
             do {

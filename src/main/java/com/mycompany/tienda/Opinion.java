@@ -39,7 +39,15 @@ public class Opinion {
     
     @Override
     public String toString(){
-        return usuario.getNombre()+"\n------------------\npuntuacion: "+puntuacion+"\ncomentario: "+comentario+"\nlike: "+votopositivo+" dislike: "+votonegativo;
+        return usuario.getNombre()+
+                "\n------------------\npuntuacion: "+
+                puntuacion+
+                "\ncomentario: "+
+                comentario+
+                "\nlike: "+
+                votopositivo+
+                " dislike: "+
+                votonegativo;
     }
 
 }

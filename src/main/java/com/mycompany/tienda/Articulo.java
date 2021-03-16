@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Ismael m
  */
-public class Articulo {
+public abstract class Articulo {
     private String codigo;
     private String nombre;
     private float precio;
@@ -61,7 +61,7 @@ public class Articulo {
 	
     @Override
     public String toString() {
-	return "Codigo: "+codigo+"\nNombre: "+nombre+"\nPrecio: "+precio+"\nStock: "+stock;
+	return "Codigo: "+codigo+"\nNombre: "+nombre+"\nmedia de opiniones: "+mediaopinion()+"\nPrecio: "+precio+"\nStock: "+stock;
     }
 	
     @Override
@@ -86,7 +86,33 @@ public class Articulo {
     }
 	
     public String sinstock() {
-	return "Codigo: "+codigo+"\nNombre: "+nombre+"\nPrecio: "+precio;
+	return "Codigo: "+codigo+"\nNombre: "+nombre+"\nmedia de opiniones: "+mediaopinion()+"\nPrecio: "+precio;
+    }
+    
+    private float mediaopinion(){
+        float media=0;
+        
+        for(Opinion a:opinion){
+            if(a.puntuacion.equals(Puntuacion.excelente)){
+                media=media+5;
+            }
+            if(a.puntuacion.equals(Puntuacion.muybueno)){
+                media=media+4;
+            }
+            if(a.puntuacion.equals(Puntuacion.bueno)){
+                media=media+3;
+            }
+            if(a.puntuacion.equals(Puntuacion.malo)){
+                media=media+2;
+            }
+            if(a.puntuacion.equals(Puntuacion.terriblepapa)){
+                media=media+1;
+            }
+        }
+        
+        media=media/opinion.size();
+        
+        return media;
     }
     
 }

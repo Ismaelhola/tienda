@@ -86,10 +86,10 @@ public class Tienda {
         
     }
     private static void inicializarcatalogo(ArrayList<Articulo> c) {
-        c.add(new Articulo("0001", "Monitor", 200.00F, 10));
-        c.add(new Articulo("0002", "Teclado", 10.00F, 100));
-        c.add(new Articulo("0003", "RJ45 2M", 4.50F, 50));
-        c.add(new Articulo("0004", "Raton", 20.00F, 15));
+        c.add(new Ropa("azul",Talla.S,"0001", "pantalon", 20.00F, 10));
+        c.add(new Electrodomestico("0002", "tostadora", 90.00F, 100, ClasE.C,"alta"));
+        c.add(new Ropa("verde", Talla.XL,"0003", "sudadera", 40.50F, 50));
+        c.add(new Ropa("0004", "Raton", 20.00F, 15));
         c.add(new Ropa("rojo", Talla.S, "0005", "jersey", 25.50F, 200));
         c.add(new Electrodomestico("0006", "nevera", 500.00F, 200, ClasE.A, "alta"));
         c.add(new Lavadora("0007", "lavadora", 200.00F, 100, ClasE.A, "alta", 1000, 30, 39.50F, Marca.Beko));

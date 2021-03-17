@@ -55,4 +55,14 @@ public class Electrodomestico extends Articulo{
     public String toString(){
         return super.toString()+"\nclasificacion energetica:"+clasificacionenergetica+"\ngama :"+gama;
     }
+
+    @Override
+    public void applypromo(String codpromo) {
+        if(codpromo.equals("ELECPROMO")){
+            this.setprecio(((float)this.getprecio()*0.9));
+        }
+        if(codpromo.equals("SINIVA")){
+            this.setprecio(((float)this.getprecio()*0.9));
+        }
+    }
 }

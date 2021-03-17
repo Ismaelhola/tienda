@@ -57,4 +57,11 @@ public class Ropa extends Articulo{
         return super.toString()+"\ncolor: "+getColor()+"\ntalla: "+getTalla();
     }
     
+    @Override
+    public void applypromo(String codpromo){
+        if(codpromo.equals("ROPAPROMO")){
+            this.setprecio(((float)this.getprecio()*0.8));
+        }
+    }
+    
 }

@@ -29,6 +29,8 @@ public abstract class Articulo {
 	setstock(s);
         opinion = new ArrayList<Opinion>();
     }
+    
+    public abstract void applypromo(String codigopromo);
 	
     public String getcodigo() {
 	return codigo;

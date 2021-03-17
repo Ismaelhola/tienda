@@ -128,8 +128,8 @@ public class Tienda {
         
         do{
             System.out.println("¿Que tipo de articulo quieres añadir");
-            System.out.println("1. ropa");
-            System.out.println("2. electrodomestico");
+            System.out.println("1. electrodomestico");
+            System.out.println("2. ropa");
             System.out.println("¿Que opcion eliges?");
             opcion=scn.nextInt();
             switch(opcion){
@@ -145,9 +145,121 @@ public class Tienda {
                             }
                         }
                     }while(salir);
-                    System.out.println("¿cual es el nombre ");
+                    System.out.println("¿Cual es el nombre?");
+                    nombre=sct.nextLine();
+                    System.out.println("¿Cual es el precio?");
+                    precio=scn.nextFloat();
+                    System.out.println("¿Cuanto stock tiene?");
+                    stock=scn.nextInt();
+                    System.out.println("¿Cual es la gama del producto?");
+                    gama=sct.nextLine();
+                    System.out.println("¿Que clasificacion electronica tiene?");
+                    System.out.println("1. "+ClasE.A);
+                    System.out.println("2. "+ClasE.B);
+                    System.out.println("3. "+ClasE.C);
+                    System.out.println("4. "+ClasE.D);
+                    System.out.println("5. "+ClasE.E);
+                    System.out.println("6. "+ClasE.F);
+                    do{
+                        salir=false;
+                        System.out.println("¿Cual es tu opcion?");
+                        opcion=scn.nextInt();
+                        switch(opcion){
+                            case 1:
+                                c.add(new Electrodomestico(codigo, nombre, precio, stock, ClasE.A, gama));
+                                break;
+                            case 2:
+                                c.add(new Electrodomestico(codigo, nombre, precio, stock, ClasE.B, gama));
+                                break;
+                            case 3:
+                                c.add(new Electrodomestico(codigo, nombre, precio, stock, ClasE.C, gama));
+                                break;
+                            case 4:
+                                c.add(new Electrodomestico(codigo, nombre, precio, stock, ClasE.D, gama));
+                                break;
+                            case 5:
+                                c.add(new Electrodomestico(codigo, nombre, precio, stock, ClasE.E, gama));
+                                break;
+                            case 6:
+                                c.add(new Electrodomestico(codigo, nombre, precio, stock, ClasE.F, gama));
+                                break;
+                            default:
+                                System.out.println("Este clasificacion no existe");
+                                salir=true;
+                                break;
+                        }
+                    }while(salir);
+                    System.out.println("Se ha añadido el articulo");
+                    salir=true;
+                    break;
+                case 2:
+                    do{
+                        salir=false;
+                        System.out.println("¿cual es el codigo?");
+                        codigo=sct.nextLine();
+                        for(Articulo a : c){
+                            if(a.getcodigo().equals(codigo)){
+                             salir=true;
+                                System.out.println("este codigo esta cojido escribe otro");
+                            }
+                        }
+                    }while(salir);
+                    System.out.println("¿Cual es el nombre?");
+                    nombre=sct.nextLine();
+                    System.out.println("¿Cual es el precio?");
+                    precio=scn.nextFloat();
+                    System.out.println("¿Cuanto stock tiene?");
+                    stock=scn.nextInt();
+                    System.out.println("¿Cual es el color de la prenda?");
+                    color=sct.nextLine();
+                    System.out.println("¿Que talla tiene?");
+                    System.out.println("1. "+Talla.XXS);
+                    System.out.println("2. "+Talla.XS);
+                    System.out.println("3. "+Talla.S);
+                    System.out.println("4. "+Talla.M);
+                    System.out.println("5. "+Talla.L);
+                    System.out.println("6. "+Talla.XL);
+                    System.out.println("7. "+Talla.XXL);
+                    do{
+                        salir=false;
+                        System.out.println("¿Cual es tu opcion?");
+                        opcion=scn.nextInt();
+                        switch(opcion){
+                            case 1:
+                                c.add(new Ropa(color, Talla.XXS, codigo, nombre, precio, stock));
+                                break;
+                            case 2:
+                                c.add(new Ropa(color, Talla.XS, codigo, nombre, precio, stock));
+                                break;
+                            case 3:
+                                c.add(new Ropa(color, Talla.S, codigo, nombre, precio, stock));
+                                break;
+                            case 4:
+                                c.add(new Ropa(color, Talla.M, codigo, nombre, precio, stock));
+                                break;
+                            case 5:
+                                c.add(new Ropa(color, Talla.L, codigo, nombre, precio, stock));
+                                break;
+                            case 6:
+                                c.add(new Ropa(color, Talla.XL, codigo, nombre, precio, stock));
+                                break;
+                            case 7:
+                                c.add(new Ropa(color, Talla.XXL, codigo, nombre, precio, stock));
+                                break;
+                            default:
+                                System.out.println("Este talla no existe");
+                                salir=true;
+                                break;
+                        }
+                    }while(salir);
+                    System.out.println("Se ha añadido el articulo");
+                    salir=true;
+                    break;
+                default:
+                    System.out.println("Ese tipo de articulo no existe");
+                    break;
             }
-        }while(!salir);
+        }while(!salir);       
     }
     
     private static void mostrarcatalogo(ArrayList<Articulo> c) {
